@@ -18,6 +18,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] int jumpCounter = 1;
     private int startJumpCounter;
 
+
+
+
+    private bool canFall = false;
+    public void Fall()
+    {
+        canFall = true;
+    }
+
     void Start()
     {
         startJumpCounter = jumpCounter;
@@ -29,6 +38,14 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if(!IsGrounded() && canFall)
+        {
+            animator.Play("PlayerFall");
+        }
+        if(IsGrounded())
+        {
+            animator.SetTrigger("goToIdle");
+        }
         MovePlayer();
         FlipSprite();
         Jump();
@@ -39,7 +56,7 @@ public class PlayerController : MonoBehaviour
         var horizontalInnput = Input.GetAxisRaw("Horizontal");
         myRigidbody.velocity = new Vector2(horizontalInnput * moveSpeed, myRigidbody.velocity.y);
 
-        if(Mathf.Abs(myRigidbody.velocity.x) > 0)
+        if(Mathf.Abs(myRigidbody.velocity.x) > 0 && IsGrounded())
         {
             animator.SetBool("run", true);
         }
@@ -67,6 +84,10 @@ public class PlayerController : MonoBehaviour
         }
         if(Input.GetButtonDown("Jump") && jumpCounter > 0)
         {
+            if(IsGrounded())
+            {
+                animator.SetTrigger("jump");
+            }
             jumpCounter--;
             myRigidbody.velocity += new Vector2(0f, jumpPower);
         }
