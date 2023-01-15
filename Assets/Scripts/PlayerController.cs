@@ -5,8 +5,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] Joystick joystick;
     [Header("Move Props")]
     [SerializeField] private float moveSpeed = 6f;
+    [SerializeField] private float crouchSpeed = 3f;
     [SerializeField] private float jumpPower = 1f;
 
     private SpriteRenderer spriteRenderer;
@@ -18,14 +20,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] int jumpCounter = 1;
     private int startJumpCounter;
 
-
-
-
     private bool canFall = false;
-    public void Fall()
-    {
-        canFall = true;
-    }
+
+    public static bool isCrouching;
 
     void Start()
     {
@@ -38,23 +35,50 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if(!IsGrounded() && canFall)
+        HandleFallAnimation();
+        MovePlayerJoystik();
+        FlipSprite();
+        Jump();
+    }
+
+    public void Fall() // Event anim
+    {
+        canFall = true;
+    }
+
+    private void HandleFallAnimation()
+    {
+        if (!IsGrounded() && canFall)
         {
             animator.Play("PlayerFall");
         }
-        if(IsGrounded())
+        if (IsGrounded())
         {
             animator.SetTrigger("goToIdle");
         }
-        MovePlayer();
-        FlipSprite();
-        Jump();
+    }
+
+    private void MovePlayerJoystik()
+    {
+        // var horizontalInnput = Input.GetAxisRaw("Horizontal");
+        var horizontalInnput = joystick.Horizontal;
+        myRigidbody.velocity = new Vector2(horizontalInnput * moveSpeed, myRigidbody.velocity.y);
+
+        if(Mathf.Abs(myRigidbody.velocity.x) > 0 && IsGrounded())
+        {
+            animator.SetBool("run", true);
+        }
+        else
+        {
+            animator.SetBool("run", false);
+        }
     }
 
     private void MovePlayer()
     {
         var horizontalInnput = Input.GetAxisRaw("Horizontal");
-        myRigidbody.velocity = new Vector2(horizontalInnput * moveSpeed, myRigidbody.velocity.y);
+        // var horizontalInnput = joystick.Horizontal;
+        myRigidbody.velocity = new Vector2(horizontalInnput * (isCrouching ? crouchSpeed : moveSpeed), myRigidbody.velocity.y);
 
         if(Mathf.Abs(myRigidbody.velocity.x) > 0 && IsGrounded())
         {
@@ -91,6 +115,36 @@ public class PlayerController : MonoBehaviour
             jumpCounter--;
             myRigidbody.velocity += new Vector2(0f, jumpPower);
         }
+    }
+
+    public void JumpButton()
+    {
+        if(IsGrounded())
+        {
+            jumpCounter = startJumpCounter;
+        }
+        if(jumpCounter > 0)
+        {
+            if(IsGrounded())
+            {
+                animator.SetTrigger("jump");
+            }
+            jumpCounter--;
+            myRigidbody.velocity += new Vector2(0f, jumpPower);
+        }
+    }
+
+    public void CrouchButtonUp()
+    {
+        if(IsGrounded())
+        {
+            animator.SetBool("crouch", true);
+        }
+    }
+
+    public void CrouchButtonDown()
+    {
+        animator.SetBool("crouch", false);
     }
 
     private bool IsGrounded()
