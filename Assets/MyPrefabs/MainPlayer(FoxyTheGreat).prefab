@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6671904006899940841}
   m_Layer: 0
   m_Name: MainPlayer(FoxyTheGreat)
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -121,8 +121,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.028886288, y: -0.3364606}
-  m_Size: {x: 0.86044043, y: 0.9770789}
+  m_Offset: {x: -0.028886288, y: -0.35975182}
+  m_Size: {x: 0.86044043, y: 0.93049645}
   m_Direction: 0
 --- !u!50 &6671904006899940842
 Rigidbody2D:
@@ -140,7 +140,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: b482fa16500ea414eb13d943a7d6ccb1, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -157,7 +157,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ff8a8d19703643409a7a54a3710c8f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  joystick: {fileID: 2929252283123773951, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
+  joystick: {fileID: 0}
   moveSpeed: 7
+  crouchSpeed: 3
   jumpPower: 7
   jumpCounter: 1

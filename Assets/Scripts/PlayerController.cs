@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public bool canMove = true;
+
     [SerializeField] Joystick joystick;
     [Header("Move Props")]
     [SerializeField] private float moveSpeed = 6f;
@@ -35,10 +37,13 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        HandleFallAnimation();
-        MovePlayerJoystik();
-        FlipSprite();
-        Jump();
+        if(canMove)
+        {
+            HandleFallAnimation();
+            MovePlayerJoystik();
+            FlipSprite();
+            Jump();
+        }
     }
 
     public void Fall() // Event anim
