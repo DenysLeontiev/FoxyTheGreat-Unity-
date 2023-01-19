@@ -19,12 +19,16 @@ public class BearMove : MonoBehaviour
 
     void Update()
     {
+        if(DialogueManager.hasDisplayedLastLine)
+        {
+            gameObject.SetActive(false);
+        }
         if(activateBear && hasReachedPlayer == false)
         {
-            transform.localScale = new Vector2(-1, 1);
             Vector2 playerPos = new Vector2(player.transform.position.x, transform.position.y);
             transform.position = Vector2.MoveTowards(transform.position, playerPos, 0.02f);
             animator.SetBool("run", true);
+            transform.localScale = new Vector2(-1, 1);
 
 
             float distncBtwn = Vector2.Distance(transform.position, player.transform.position);
@@ -32,8 +36,9 @@ public class BearMove : MonoBehaviour
             {
                 hasReachedPlayer = true;
                 animator.SetBool("run", false);
+                animator.SetTrigger("right");
+                DialogueManager.displayDialogue = true;
             }
-            print(distncBtwn);
         }
     }
 }

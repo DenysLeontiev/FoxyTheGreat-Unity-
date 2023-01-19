@@ -24,7 +24,7 @@ public class TriggerCutScene1 : MonoBehaviour
         collider.GetComponent<PlayerController>().canMove = false;
         collider.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
         collider.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(4f);
         collider.GetComponent<PlayerController>().canMove = true;
         collider.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
         collider.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
