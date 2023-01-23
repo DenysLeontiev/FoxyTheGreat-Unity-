@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class BearMove : MonoBehaviour
 {
+    [SerializeField] private Transform goAwayPoint;
+    [SerializeField] private float bearSpeed = 0.02f;
+
     public static bool activateBear = false;
     public static bool isDialogueFinished = false;
 
@@ -11,17 +14,17 @@ public class BearMove : MonoBehaviour
     private Animator animator;
     private bool hasReachedPlayer = false;
 
-    void Start()
+    private void Start()
     {
         player = FindObjectOfType<PlayerController>();
         animator = GetComponent<Animator>();
     }
 
-    void Update()
+    private void Update()
     {
         if(DialogueManager.hasDisplayedLastLine)
         {
-            gameObject.SetActive(false);
+            BearGoAway();
         }
         if(activateBear && hasReachedPlayer == false)
         {
@@ -39,6 +42,23 @@ public class BearMove : MonoBehaviour
                 animator.SetTrigger("right");
                 DialogueManager.displayDialogue = true;
             }
+        }
+    }
+
+    private void BearGoAway()
+    {
+        animator.SetTrigger("runLeft");
+        Rigidbody2D playerRigidbody = player.GetComponent<Rigidbody2D>();
+
+        Vector2 destination = new Vector2(goAwayPoint.position.x, transform.position.y);
+        transform.position = Vector2.MoveTowards(transform.position, destination, bearSpeed);
+
+        if(Vector2.Distance(transform.position, destination) < 2f)
+        {
+            PlayerController.canMove = true;
+            playerRigidbody.constraints = RigidbodyConstraints2D.None;
+            playerRigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
+            Destroy(gameObject);
         }
     }
 }

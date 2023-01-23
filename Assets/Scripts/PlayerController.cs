@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public bool canMove = true;
+    public static bool canMove = true;
 
     [SerializeField] Joystick joystick;
     [Header("Move Props")]
@@ -118,7 +118,8 @@ public class PlayerController : MonoBehaviour
                 animator.SetTrigger("jump");
             }
             jumpCounter--;
-            myRigidbody.velocity += new Vector2(0f, jumpPower);
+            Vector2 t = transform.up;
+            myRigidbody.velocity += new Vector2(0f, jumpPower * t.y);
         }
     }
 

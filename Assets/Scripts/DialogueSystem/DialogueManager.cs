@@ -13,6 +13,7 @@ public class DialogueManager : MonoBehaviour
     [TextArea]
     [SerializeField] private string[] sentences;
     [SerializeField] private string[] names;
+    [SerializeField] private float charSpeed = 0.002f;
 
     public static bool displayDialogue = false;
 
@@ -59,7 +60,7 @@ public class DialogueManager : MonoBehaviour
             foreach (char c in sentences[index].ToCharArray())
             {
                 textMesh.text += c;
-                yield return null;
+                yield return new WaitForSeconds(charSpeed);
             }
             index++;
         }
