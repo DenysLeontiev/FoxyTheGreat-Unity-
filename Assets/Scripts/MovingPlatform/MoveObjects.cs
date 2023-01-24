@@ -6,7 +6,7 @@ using UnityEngine;
 public class MoveObjects : MonoBehaviour
 {
     [SerializeField] private Transform[] points; // 0 - starting | 1 - ending
-    [SerializeField] private float speed = 1f;
+    [SerializeField] public float speed = 1f;
     [SerializeField] private bool isEnemy = false;
 
     private Transform player;
