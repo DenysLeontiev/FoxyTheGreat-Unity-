@@ -57,8 +57,7 @@ public class MoveObjects : MonoBehaviour
         {
             if(other.transform.tag == "Player")
             {
-                player.GetComponent<Animator>().SetTrigger("hurt");
-                print("Died: " + player.name);
+                StartCoroutine(player.GetComponent<PlayerHealth>().RemoveHeart());
             }
         }
     }
