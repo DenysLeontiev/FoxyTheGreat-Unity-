@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class BulletSpawn : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private Transform spawnPoint;
+    [SerializeField] private float spawnTime = 1f;
+    private float currentSpawnTime = 0f;
+
+    private void Update()
     {
-        
+        SpawnBullets();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void SpawnBullets()
     {
-        
+        currentSpawnTime += Time.deltaTime;
+        if(currentSpawnTime > spawnTime)
+        {
+            currentSpawnTime = 0;
+            GameObject bullet = Instantiate(bulletPrefab, spawnPoint.position, Quaternion.identity);
+        }
     }
 }

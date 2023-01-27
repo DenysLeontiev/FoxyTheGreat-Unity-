@@ -31,7 +31,6 @@ public class PlayerHealth : MonoBehaviour
 
     private void Update()
     {
-        print(currentHealthPoints);
         if (testUpdate == true)
         {
             UpdateHealth();
