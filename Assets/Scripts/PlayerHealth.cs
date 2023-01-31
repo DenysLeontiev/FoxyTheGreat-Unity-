@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
+    [SerializeField] GameObject diePanel;
+    private Animator panelAnimator;
     [SerializeField] private int startingHealthPoints = 3;
     [SerializeField] private GameObject heartPrefab;
     [SerializeField] private int currentHealthPoints;
@@ -16,13 +18,10 @@ public class PlayerHealth : MonoBehaviour
     private Animator animator;
     private float xOff = 150f;
 
-    public bool testUpdate = false;
-    public bool testRemove = false;
-    public bool testAdd = false;
-
     private void Start()
     {
         currentHealthPoints = startingHealthPoints;
+        panelAnimator = diePanel.GetComponent<Animator>();
         hearts = new List<GameObject>();
         animator = GetComponent<Animator>();
         InstantiateHealthPrefab();
@@ -31,22 +30,17 @@ public class PlayerHealth : MonoBehaviour
 
     private void Update()
     {
-        if (testUpdate == true)
+        if(currentHealthPoints <= 0)
         {
-            UpdateHealth();
+            HandleDeath();
         }
+    }
 
-        if (testRemove)
-        {
-            RemoveHeart();
-            testRemove = false;
-        }
-
-        if (testAdd)
-        {
-            AddHeart();
-            testAdd = false;
-        }
+    private void HandleDeath()
+    {
+        diePanel.SetActive(true);
+        this.GetComponent<PlayerController>().enabled = false;
+        animator.SetTrigger("hurt");
     }
 
     private void InstantiateHealthPrefab()
