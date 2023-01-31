@@ -71,6 +71,7 @@ public class PlayerHealth : MonoBehaviour
 
     public IEnumerator RemoveHeart()
     {
+        CinemachineShake.Instance.ShakeCamera(5, 0.2f);
         animator.SetTrigger("hurt");
         currentHealthPoints--;
         if (currentHealthPoints < 0)

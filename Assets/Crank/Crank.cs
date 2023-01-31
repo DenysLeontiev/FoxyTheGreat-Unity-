@@ -43,6 +43,10 @@ public class Crank : MonoBehaviour
         {
             StartCoroutine(ButtonDisapper());
         }
+        else
+        {
+            StartCoroutine(ButtonDisapper());
+        }
     }
 
     private IEnumerator ButtonDisapper()

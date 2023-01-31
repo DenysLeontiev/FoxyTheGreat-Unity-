@@ -12,6 +12,7 @@ public class MoveObjects : MonoBehaviour
     private Transform player;
     [SerializeField] private float distanceToActivatePlatform = 40f;
     private int currentIndex = 0;
+    [SerializeField] private bool isBoxInCutScene = false; // used for level1 cutscene to check for crank activation
 
     private void Start()
     {
@@ -20,15 +21,21 @@ public class MoveObjects : MonoBehaviour
 
     private void Update()
     {
-        // if(Vector2.Distance(transform.position, player.position) < distanceToActivatePlatform)
-        // {
+
+        if(!isBoxInCutScene)
+        {
             MoveBetweenPoints();
-        // }
+        }
+        else if(isBoxInCutScene && ButtonEvent.isCrankActivated)
+        {
+            MoveBetweenPoints();
+        }
+
     }
 
     private void MoveBetweenPoints()
     {
-        if(currentIndex >= points.Length)
+        if (currentIndex >= points.Length)
         {
             currentIndex = 0;
         }
@@ -41,7 +48,7 @@ public class MoveObjects : MonoBehaviour
             currentIndex++;
         }
 
-        if(isEnemy && distanceBetween < 1f)
+        if (isEnemy && distanceBetween < 1f)
         {
             transform.localScale = new Vector2(transform.localScale.x * (-1), transform.localScale.y);
         }
@@ -49,13 +56,13 @@ public class MoveObjects : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other) // make it parent because we want the player to move with the platform
     {
-        if(isEnemy == false)
+        if (isEnemy == false)
         {
             other.transform.parent = transform;
         }
         else
         {
-            if(other.transform.tag == "Player")
+            if (other.transform.tag == "Player")
             {
                 StartCoroutine(player.GetComponent<PlayerHealth>().RemoveHeart());
             }
@@ -64,13 +71,13 @@ public class MoveObjects : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D other)
     {
-        if(isEnemy == false)
+        if (isEnemy == false)
         {
             other.transform.parent = null;
         }
         else
         {
-            
+
         }
     }
 }

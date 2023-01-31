@@ -21,7 +21,6 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        print(other.transform.name);
         if (other.transform.tag == "Player")
         {
             StartCoroutine(player.GetComponent<PlayerHealth>().RemoveHeart());

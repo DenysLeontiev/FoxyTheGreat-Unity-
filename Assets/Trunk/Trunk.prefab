@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5295230545677990463}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 6146649497736735213}
   - component: {fileID: 6146649497736735214}
   - component: {fileID: 8363263026181860196}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Trunk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,4 +179,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 6915754604667985330, guid: 55477988b6040fa4fb7fd18e246fb039, type: 3}
   spawnPoint: {fileID: 5295230545677990463}
-  spawnTime: 0
+  spawnTime: 1
