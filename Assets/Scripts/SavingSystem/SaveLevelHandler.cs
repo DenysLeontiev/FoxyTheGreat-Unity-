@@ -7,6 +7,7 @@ public class SaveLevelHandler : MonoBehaviour
     [SerializeField] private bool isFirstLevel;
     [SerializeField] private bool isSecondLevel;
     [SerializeField] private bool isThirdLevel;
+    [SerializeField] private bool isFourthLevel;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         SaveLevels();
@@ -19,7 +20,7 @@ public class SaveLevelHandler : MonoBehaviour
 
     private void SaveLevels()
     {
-        LevelsProgress levelsProgress = new LevelsProgress(isFirstLevel, isSecondLevel, isThirdLevel);
+        LevelsProgress levelsProgress = new LevelsProgress(isFirstLevel, isSecondLevel, isThirdLevel, isFourthLevel);
         SaveLevelSystem.SaveLevels(levelsProgress);
         Debug.Log("Saved " + isFirstLevel + "| " + isSecondLevel + "| " + isThirdLevel + "| ");
     }

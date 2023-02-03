@@ -15,7 +15,7 @@ public static class SaveLevelSystem
         FileStream fileStream = new FileStream(path, FileMode.Create);
         Debug.Log(path);
 
-        LevelsProgress data = new LevelsProgress(levelsProgress.isFirstLevel, levelsProgress.isSecondLevel, levelsProgress.isThirdLevel);
+        LevelsProgress data = new LevelsProgress(levelsProgress.isFirstLevel, levelsProgress.isSecondLevel, levelsProgress.isThirdLevel, levelsProgress.isFourthLevel);
         binaryFormatter.Serialize(fileStream, data);
         fileStream.Close();
     }

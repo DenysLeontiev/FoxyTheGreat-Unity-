@@ -2423,7 +2423,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeInScreen: {fileID: 1680654600}
-  levelIndex: 2
+  levelIndex: 4
 --- !u!114 &380111826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2439,6 +2439,7 @@ MonoBehaviour:
   isFirstLevel: 1
   isSecondLevel: 1
   isThirdLevel: 0
+  isFourthLevel: 1
 --- !u!1 &381153356
 GameObject:
   m_ObjectHideFlags: 0
