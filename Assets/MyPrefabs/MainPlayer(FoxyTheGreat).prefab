@@ -122,8 +122,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.028886288, y: -0.35975182}
-  m_Size: {x: 0.86044043, y: 0.93049645}
+  m_Offset: {x: -0.016735077, y: -0.26254714}
+  m_Size: {x: 0.6660309, y: 1.1249058}
   m_Direction: 0
 --- !u!50 &6671904006899940842
 Rigidbody2D:
@@ -175,12 +175,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59e09d3da2f122149aae36c40008a9e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  diePanel: {fileID: 0}
   startingHealthPoints: 3
   heartPrefab: {fileID: 3583985393152187691, guid: 464ef28082cc6d04192f250b2400fad3, type: 3}
   currentHealthPoints: 0
   xOffset: 120
   yOffset: 950
   parent: {fileID: 0}
-  testUpdate: 0
-  testRemove: 0
-  testAdd: 0

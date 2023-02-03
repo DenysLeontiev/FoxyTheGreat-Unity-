@@ -21,7 +21,10 @@ public class PlayerHealth : MonoBehaviour
     private void Start()
     {
         currentHealthPoints = startingHealthPoints;
-        panelAnimator = diePanel.GetComponent<Animator>();
+        if(diePanel != null)
+        {
+            panelAnimator = diePanel.GetComponent<Animator>();
+        }
         hearts = new List<GameObject>();
         animator = GetComponent<Animator>();
         InstantiateHealthPrefab();

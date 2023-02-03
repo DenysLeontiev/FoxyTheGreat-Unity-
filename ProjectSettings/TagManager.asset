@@ -43,3 +43,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: window
+    uniqueID: 2990073057
+    locked: 0
+  - name: slope
+    uniqueID: 3686595031
+    locked: 0
