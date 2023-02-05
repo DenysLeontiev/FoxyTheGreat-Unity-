@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseGame : MonoBehaviour
 {
@@ -14,11 +15,6 @@ public class PauseGame : MonoBehaviour
     private void Start()
     {
         panelAnimator = pausePanel.GetComponent<Animator>();
-    }
-
-    private void Update()
-    {
-
     }
 
     public void ActivatePauseMenu()
@@ -44,5 +40,11 @@ public class PauseGame : MonoBehaviour
         upMovementBtn.SetActive(true);
         downMovementBtn.SetActive(true);
         pausePanel.SetActive(false);
+    }
+
+    public void GoToMainMenuBtn()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(0);
     }
 }

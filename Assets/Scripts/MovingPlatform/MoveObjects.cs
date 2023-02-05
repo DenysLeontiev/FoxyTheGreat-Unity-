@@ -62,7 +62,7 @@ public class MoveObjects : MonoBehaviour
         }
         else
         {
-            if (other.transform.tag == "Player")
+            if (other.transform.CompareTag("Player"))
             {
                 StartCoroutine(player.GetComponent<PlayerHealth>().RemoveHeart());
             }

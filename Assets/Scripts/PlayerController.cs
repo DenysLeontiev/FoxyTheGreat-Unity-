@@ -161,6 +161,6 @@ public class PlayerController : MonoBehaviour
 
     private bool IsGrounded()
     {
-        return myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Ground"));
+        return myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Ground")) || myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Spikes"));
     }
 }
