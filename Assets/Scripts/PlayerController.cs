@@ -1,18 +1,27 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private TextMeshProUGUI textMesh;
+    private int scoreText = 0;
+    [SerializeField] private Button jumpBtn;
+
     public static bool canMove = true;
+    public static bool isOnLadder = false;
 
     [SerializeField] Joystick joystick;
     [Header("Move Props")]
     [SerializeField] private float moveSpeed = 6f;
     [SerializeField] private float crouchSpeed = 3f;
     [SerializeField] private float jumpPower = 1f;
+
+    [SerializeField] private float climbLadderSpeed = 0.1f;
 
     private SpriteRenderer spriteRenderer;
     private Animator animator;
@@ -42,23 +51,31 @@ public class PlayerController : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
-
-        if(canMove)
+        ClimbLadder();
+        if (canMove)
         {
             HandleFallAnimation();
             MovePlayerJoystik();
             FlipSprite();
-            Jump();
+            if (isOnLadder == false)
+            {
+                Jump();
+            }
+
         }
     }
 
     public void Fall() // Event anim
     {
-        canFall = true;
+        if(isOnLadder == false)
+        {
+            canFall = true;
+        }
     }
 
     private void HandleFallAnimation()
     {
+        if(isOnLadder) { return; }
         if (!IsGrounded() && canFall)
         {
             animator.Play("PlayerFall");
@@ -66,6 +83,7 @@ public class PlayerController : MonoBehaviour
         if (IsGrounded())
         {
             animator.SetTrigger("goToIdle");
+            isOnLadder = false;
         }
     }
 
@@ -117,7 +135,7 @@ public class PlayerController : MonoBehaviour
         {
             jumpCounter = startJumpCounter;
         }
-        if(Input.GetButtonDown("Jump") && jumpCounter > 0)
+        if(Input.GetButtonDown("Jump") && jumpCounter > 0 && !isOnLadder)
         {
             if(IsGrounded())
             {
@@ -131,18 +149,21 @@ public class PlayerController : MonoBehaviour
 
     public void JumpButton()
     {
-        if(IsGrounded())
+        if(!isOnLadder)
         {
-            jumpCounter = startJumpCounter;
-        }
-        if(jumpCounter > 0)
-        {
-            if(IsGrounded())
+            if (IsGrounded())
             {
-                animator.SetTrigger("jump");
+                jumpCounter = startJumpCounter;
             }
-            jumpCounter--;
-            myRigidbody.velocity += new Vector2(0f, jumpPower);
+            if (jumpCounter > 0)
+            {
+                if (IsGrounded())
+                {
+                    animator.SetTrigger("jump");
+                }
+                jumpCounter--;
+                myRigidbody.velocity += new Vector2(0f, jumpPower);
+            }
         }
     }
 
@@ -162,5 +183,46 @@ public class PlayerController : MonoBehaviour
     private bool IsGrounded()
     {
         return myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Ground")) || myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Spikes"));
+    }
+
+    private void ClimbLadder()
+    {
+        if(isOnLadder && ClimbLadderBtn.isClimpLadderButtonPressed)
+        {
+            myRigidbody.gravityScale = 0f;
+            animator.SetBool("climb", true);
+            myRigidbody.velocity += new Vector2(myRigidbody.velocity.x, climbLadderSpeed);   
+        }
+        else
+        {
+            myRigidbody.gravityScale = 1f;
+            animator.SetBool("climb", false);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Ladder"))
+        {
+            isOnLadder = true;
+            canFall = false;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Ladder"))
+        {
+            isOnLadder = false;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.collider.tag == "Heart")
+        {
+            scoreText++;
+            textMesh.text = $"{scoreText}/100";
+        }
     }
 }

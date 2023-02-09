@@ -14,7 +14,7 @@ public class MoveObjects : MonoBehaviour
     private int currentIndex = 0;
     [SerializeField] private bool isBoxInCutScene = false; // used for level1 cutscene to check for crank activation
 
-    private void Awake()
+    private void Start()
     {
         player = FindObjectOfType<PlayerController>().transform;
     }
