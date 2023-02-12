@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI textMesh;
-    private int scoreText = 0;
+    public static int scoreText = 0;
     [SerializeField] private Button jumpBtn;
 
     public static bool canMove = true;
@@ -50,6 +50,7 @@ public class PlayerController : MonoBehaviour
         if(transform.position.y < -10f)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            ReloadDialogueLevel();
         }
         ClimbLadder();
         if (canMove)
@@ -63,6 +64,15 @@ public class PlayerController : MonoBehaviour
             }
 
         }
+    }
+
+    public static void ReloadDialogueLevel()
+    {
+        BearMove.isDialogueFinished = false;
+        BearMove.activateBear = false;
+        DialogueManager.displayDialogue = false;
+        PigMove.playCutScene = false;
+        DialogueManager.hasDisplayedLastLine = false;
     }
 
     public void Fall() // Event anim
@@ -221,8 +231,18 @@ public class PlayerController : MonoBehaviour
     {
         if(collision.collider.tag == "Heart")
         {
+            if(scoreText >= 150)
+            {
+                SaveLevels();
+            }
             scoreText++;
-            textMesh.text = $"{scoreText}/100";
+            textMesh.text = $"{scoreText}/150";
         }
+    }
+
+    private void SaveLevels()
+    {
+        LevelsProgress levelsProgress = new LevelsProgress(true, true, true, true);
+        SaveLevelSystem.SaveLevels(levelsProgress);
     }
 }

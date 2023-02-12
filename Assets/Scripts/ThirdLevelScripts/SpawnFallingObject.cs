@@ -15,7 +15,9 @@ public class SpawnFallingObject : MonoBehaviour
     [SerializeField] private bool isSpike = false;
 
     [Range(0f, 1f)]
-    [SerializeField] private float frequency = 0.7f;
+    [SerializeField] private float frequency = 1f;
+    [Range(0f, 1f)]
+    [SerializeField] private float rainFrequency = 1f;
 
     private float currentSpawnTime = 0f;
     private float startingFrequency = 0f;
@@ -54,7 +56,7 @@ public class SpawnFallingObject : MonoBehaviour
         int range = Random.Range(1, 100);
         if (range < 26)
         {
-            frequency = 0.008f;
+            frequency = rainFrequency;
             rainPanel.GetComponent<Animator>().SetBool("appear", true);
         }
         yield return new WaitForSeconds(5f);

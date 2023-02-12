@@ -6,7 +6,7 @@ public class FallingObj : MonoBehaviour
 {
     [SerializeField] private PlayerHealth playerHealth;
 
-    private void Start()
+    private void Awake()
     {
         playerHealth = FindObjectOfType<PlayerHealth>();
     }

@@ -11,12 +11,13 @@ public class TriggerCutScene1 : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         Rigidbody2D playerRigidbody = other.GetComponent<Rigidbody2D>();
-        if(other.tag == "Player")
+        if(other.CompareTag("Player"))
         {
             player = other.GetComponent<PlayerController>();
+            playerRigidbody.constraints = RigidbodyConstraints2D.FreezePosition;
+            player.GetComponent<Animator>().SetBool("run", false);
             PigMove.playCutScene = true;
             PlayerController.canMove = false;
-            playerRigidbody.constraints = RigidbodyConstraints2D.FreezePosition;
             Destroy(gameObject);
         }
     }
@@ -24,6 +25,7 @@ public class TriggerCutScene1 : MonoBehaviour
     private IEnumerator FreezePlayer(Collider2D collider)
     {
         PlayerController.canMove = false;
+        //player.GetComponent<Animator>().SetTrigger("goToIdle");
         // collider.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
         collider.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         yield return new WaitForSeconds(9f);

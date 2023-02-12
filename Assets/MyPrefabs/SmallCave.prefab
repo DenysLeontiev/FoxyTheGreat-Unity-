@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6539649348174503231}
   - component: {fileID: 6539649348174503230}
   - component: {fileID: 6539649348174503217}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: tileset-sliced_77
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6539649348174503228}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.97035885, y: 0.85424757, z: 0.03307859}
+  m_LocalPosition: {x: 0.89, y: 0.85424757, z: 0.03307859}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -111,10 +111,10 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: -0.53333336, y: 0.53333336}
-      - {x: -0.53333336, y: -0.53333336}
-      - {x: 0.0065202713, y: -0.5177593}
-      - {x: 0.26357692, y: -0.38641626}
-      - {x: 0.53333336, y: -0.16542801}
+      - {x: -0.53333336, y: -0.3154245}
+      - {x: -0.033099532, y: -0.33947015}
+      - {x: 0.20414716, y: -0.20812708}
+      - {x: 0.4739036, y: 0.012861162}
       - {x: 0.53333336, y: 0.53333336}
 --- !u!1 &6539649348390692130
 GameObject:
@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 6539649348390692132}
   - component: {fileID: 6539649348390692133}
   - component: {fileID: 6539649348390692135}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: tileset-sliced_76
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -214,7 +214,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.08914459}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -225,7 +225,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.0666667, y: 1.0666667}
+  m_Size: {x: 1.0666667, y: 0.8883774}
   m_EdgeRadius: 0
 --- !u!1 &6539649348687697214
 GameObject:
@@ -238,7 +238,7 @@ GameObject:
   - component: {fileID: 6539649348687697200}
   - component: {fileID: 6539649348687697201}
   - component: {fileID: 6539649348687697203}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: tileset-sliced_76 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -325,7 +325,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.08914447}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -336,7 +336,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.0666667, y: 1.0666667}
+  m_Size: {x: 1.0666667, y: 0.88837767}
   m_EdgeRadius: 0
 --- !u!1 &6539649348712096184
 GameObject:
@@ -389,7 +389,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6539649348798831519}
   - component: {fileID: 6539649348798831518}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: tileset-sliced_100
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -474,7 +474,7 @@ GameObject:
   - component: {fileID: 6539649348818585165}
   - component: {fileID: 6539649348818585164}
   - component: {fileID: 6539649348818585167}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: tileset-sliced_76 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -561,7 +561,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.10895443}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -572,7 +572,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.0666667, y: 1.0666667}
+  m_Size: {x: 1.0666667, y: 0.84875774}
   m_EdgeRadius: 0
 --- !u!1 &6539649349327594609
 GameObject:
@@ -585,7 +585,7 @@ GameObject:
   - component: {fileID: 6539649349327594608}
   - component: {fileID: 6539649349327594611}
   - component: {fileID: 6539649349327594610}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: tileset-sliced_75
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -685,9 +685,9 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: -0.53333336, y: 0.53333336}
-      - {x: -0.53333336, y: -0.13455826}
-      - {x: 0.008022308, y: -0.52858233}
-      - {x: 0.53333336, y: -0.53333336}
+      - {x: -0.27580506, y: -0.055318654}
+      - {x: 0.06745219, y: -0.2116239}
+      - {x: 0.53333336, y: -0.27580482}
       - {x: 0.53333336, y: 0.53333336}
 --- !u!1 &6539649349638203531
 GameObject:
@@ -868,7 +868,7 @@ GameObject:
   - component: {fileID: 6539649349725378268}
   - component: {fileID: 6539649349725378269}
   - component: {fileID: 6539649349725378271}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: tileset-sliced_76 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -955,7 +955,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.07923961}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -966,7 +966,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.0666667, y: 1.0666667}
+  m_Size: {x: 1.0666667, y: 0.9081874}
   m_EdgeRadius: 0
 --- !u!1 &6539649350069936428
 GameObject:
@@ -978,7 +978,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6539649350069936431}
   - component: {fileID: 6539649350069936430}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: tileset-sliced_100 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
