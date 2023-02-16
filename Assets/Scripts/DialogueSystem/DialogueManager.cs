@@ -18,6 +18,7 @@ public class DialogueManager : MonoBehaviour
     public static bool displayDialogue = false;
 
     private int index = 0;
+    private bool canClick = true;
 
     void Start()
     {
@@ -33,8 +34,9 @@ public class DialogueManager : MonoBehaviour
             if (Input.touchCount > 0)
             {
                 Touch touch = Input.GetTouch(0);
-                if (touch.phase == TouchPhase.Began)
+                if (touch.phase == TouchPhase.Began && canClick)
                 {
+                    canClick = false;
                     StartCoroutine(StartLine());
                 }
             }
@@ -71,6 +73,8 @@ public class DialogueManager : MonoBehaviour
             yield return new WaitForSeconds(3f);
             box.GetComponent<Animator>().SetTrigger("disappear");
         }
+
+        canClick = true;
     }
 }
 

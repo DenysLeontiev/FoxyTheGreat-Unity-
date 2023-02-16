@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     public static int scoreText = 0;
     [SerializeField] private Button jumpBtn;
 
+    [SerializeField] private AudioSource jumpSfx;
+
     public static bool canMove = true;
     public static bool isOnLadder = false;
 
@@ -73,6 +75,7 @@ public class PlayerController : MonoBehaviour
         DialogueManager.displayDialogue = false;
         PigMove.playCutScene = false;
         DialogueManager.hasDisplayedLastLine = false;
+        CameraCutScene1.activateCutsceneCam = false;
     }
 
     public void Fall() // Event anim
@@ -169,9 +172,11 @@ public class PlayerController : MonoBehaviour
             {
                 if (IsGrounded())
                 {
+                    
                     animator.SetTrigger("jump");
                 }
                 jumpCounter--;
+                jumpSfx.Play();
                 myRigidbody.velocity += new Vector2(0f, jumpPower);
             }
         }

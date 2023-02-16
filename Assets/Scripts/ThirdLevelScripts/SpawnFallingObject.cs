@@ -36,7 +36,6 @@ public class SpawnFallingObject : MonoBehaviour
         {
             StartCoroutine(StartHeavyRain());
         }
-        print(callRain);
     }
 
 

@@ -28,6 +28,7 @@ public class EnemyHealth : MonoBehaviour //  this script is added to child(kill 
 
     private void Die()
     {
+        transform.GetComponent<BoxCollider2D>().enabled= false;
         animator.SetTrigger("die");
         enemy.speed = 0f;
         Destroy(transform.parent.transform.parent.gameObject, 1.1f);

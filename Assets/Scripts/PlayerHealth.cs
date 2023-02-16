@@ -14,6 +14,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private float xOffset = 120f;
     [SerializeField] private float yOffset = 1000f;
     [SerializeField] private Transform parent;
+    [SerializeField] private AudioSource hurtSfx;
 
     private List<GameObject> hearts;
     private Animator animator;
@@ -70,6 +71,8 @@ public class PlayerHealth : MonoBehaviour
 
     public IEnumerator RemoveHeart()
     {
+        if (hearts.Count <= 0) yield return null ;
+        hurtSfx.Play();
         CinemachineShake.Instance.ShakeCamera(5, 0.2f);
         animator.SetTrigger("hurt");
         currentHealthPoints--;

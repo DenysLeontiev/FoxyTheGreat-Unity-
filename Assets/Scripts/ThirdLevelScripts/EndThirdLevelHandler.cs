@@ -12,7 +12,7 @@ public class EndThirdLevelHandler : MonoBehaviour
 
     private void Update()
     {
-        if(PlayerController.scoreText >= 1 && !isPanelShowed)
+        if(PlayerController.scoreText >= 150 && !isPanelShowed)
         {
             ShowWinPanel();
         }

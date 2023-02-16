@@ -20,6 +20,24 @@ public class SaveLevelHandler : MonoBehaviour
 
     private void SaveLevels()
     {
+        LevelsProgress preventResettingLevels = SaveLevelSystem.LoadLevels(); // if we won - true, when trigger tutoria scene - false
+        if(preventResettingLevels.isFirstLevel)
+        {
+            isFirstLevel = true;
+        }
+        if (preventResettingLevels.isSecondLevel)
+        {
+            isSecondLevel = true;
+        }
+        if (preventResettingLevels.isThirdLevel)
+        {
+            isThirdLevel = true;
+        }
+        if (preventResettingLevels.isFourthLevel)
+        {
+            isFourthLevel = true;
+        }
+
         LevelsProgress levelsProgress = new LevelsProgress(isFirstLevel, isSecondLevel, isThirdLevel, isFourthLevel);
         SaveLevelSystem.SaveLevels(levelsProgress);
         Debug.Log("Saved " + isFirstLevel + "| " + isSecondLevel + "| " + isThirdLevel + "| ");
